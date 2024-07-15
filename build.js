@@ -1,15 +1,8 @@
-const express = require("express");
-const app = express();
+const ejs = require("ejs");
+const fs = require("fs");
 const path = require("path");
 
-// Set the directory for static files
-app.use(express.static(path.join(__dirname, "public")));
-
-// Set EJS as the templating engine
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
-
-// Sample product data
+// Data produk untuk rendering
 const products = [
   {
     id: 1,
@@ -47,20 +40,21 @@ const products = [
     description: "Description of Shock Ohlins",
     image: "/images/product/product6.png",
   },
-  // Add more products as needed
 ];
 
-// Define a route
-app.get("/", (req, res) => {
-  res.render("index", {
-    title: "AutoGANG",
-    message: "Welcome to the Slider!",
-    products: products, // Pass products data to the view
-  });
-});
+// Path ke template
+const templatePath = path.join(__dirname, "views", "index.ejs");
 
-// Start the server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+// Render template ke HTML
+ejs.renderFile(
+  templatePath,
+  { title: "AutoGANG", message: "Welcome to the Slider!", products: products },
+  (err, str) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    // Tulis hasil HTML ke file
+    fs.writeFileSync(path.join(__dirname, "public", "index.html"), str);
+  }
+);
