@@ -1,0 +1,87 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.carousel-item img {
+  max-height: 500px;
+  object-fit: cover;
+}
+
+.carousel-inner {
+  max-height: 500px;
+  overflow: hidden;
+}
+
+.section {
+  padding: 60px 0;
+}
+
+.section.bg-light {
+  background-color: #f8f9fa;
+}
+
+.section h2 {
+  margin-bottom: 30px;
+}
+
+.justify-text {
+  text-align: justify;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+body {
+  padding-top: 56px;
+}
+
+.card {
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Transisi untuk efek transform dan box-shadow */
+}
+
+.card-img-top {
+  transition: transform 0.3s ease;
+  object-fit: cover;
+  height: 300px;
+  width: 100%;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  /* Mengangkat card dan menambahkan shadow saat hover */
+}
+
+.card:hover .card-img-top {
+  transform: scale(1.1);
+  /* Membesarkan gambar saat hover */
+}
+
+.card-body {
+  padding: 15px;
+}
+.d-none {
+  display: none;
+}
+
+#show-all-btn,
+#show-less-btn {
+  margin: 10px;
+  /* Jarak antar tombol agar tidak terlalu berdekatan */
+}
+
+#catalog-controls {
+  /* Memastikan tombol-tombol berada di tengah dan di bawah katalog */
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
